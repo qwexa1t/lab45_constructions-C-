@@ -14,9 +14,14 @@ public:
 	void set(); //прототипы методов
 	void print();
 	float area();
-	static int GetCount()
+
+	static void GetCount()
 	{
-		return Count;
+		printf(" Количество созданных квадратов: %d\n", Count);
+	}
+	static void ResetCount()
+	{
+		Count = 0;
 	}
 };
 

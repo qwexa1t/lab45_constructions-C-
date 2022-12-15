@@ -20,7 +20,6 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	int N;
 	int kolvo;
-	boolean firstin = true;
 
 	do
 	{
@@ -43,28 +42,21 @@ int main()
 	    {
 		case 1:
 		{
-			if (firstin)
-			{
-				printf("\n Вы выбрали квадрат \n");
-				printf("\n Пример \n");
-				//Вызов конструктора без параметров
-				Square* square1 = new Square; //Выделение Динамической памяти объекту класса Square
-				Square* square2 = new Square;
-				(*square1).print(); //Вывод площади квадрата на экран
-				printf("\n\n Введите данные: \n\n");
-				(*square1).set(); //Установка значений
-				(*square1).print();
-				printf("\n\n Введите данные: \n\n");
-				(*square2).set(); //Установка значений
-				(*square2).print();
-				printf(" Количество созданных квадратов: %d\n", square1->GetCount());
-				delete square1, square2; //Освобождение памяти 
-				firstin = false;
-			}
-			else
-			{
-			    printf("\n Вы уже создавали объекты типа 'Квадрат' \n");
-			}
+			printf("\n Вы выбрали квадрат \n");
+			printf("\n Пример \n");
+			//Вызов конструктора без параметров
+			Square* square1 = new Square; //Выделение Динамической памяти объекту класса Square
+			Square* square2 = new Square;
+			(*square1).print(); //Вывод площади квадрата на экран
+			printf("\n\n Введите данные: \n\n");
+			(*square1).set(); //Установка значений
+			(*square1).print();
+			printf("\n\n Введите данные: \n\n");
+			(*square2).set(); //Установка значений
+			(*square2).print();
+			square1->GetCount(); //Вывод количества объектов на экран
+			square2->ResetCount(); //Обнуление счетчика 
+			delete square1, square2; //Освобождение памяти 
 			break;
 		}
 		case 2:
