@@ -38,9 +38,19 @@ void Trapezoid::set()
 	scanf("%d", &height);
 }
 
-float Trapezoid::area()
+float Trapezoid::area() //Возврат значения по значению
 {
 	return 0.5 * (lower_base + upper_base) * height;
+}
+
+void Trapezoid::areaLink(float &area1) //Возврат значения по ссылке
+{
+	area1 = 0.5 * (lower_base + upper_base) * height;
+}
+
+void Trapezoid::areaPointer(float *p_area2) //Возврат значения по адресу
+{
+	(*p_area2) = 0.5 * (lower_base + upper_base) * height;
 }
 
 void Trapezoid::print()

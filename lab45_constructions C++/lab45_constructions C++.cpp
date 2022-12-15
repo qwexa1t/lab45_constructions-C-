@@ -99,6 +99,8 @@ int main()
 		}
 		case 4:
 		{
+			float area1 = 0; 
+			float area2 = 0;
 			printf("\n Вы выбрали Трапецию \n");
 			printf("\n Пример \n");
 			//Вызов конструктора с 3 параметрами
@@ -107,6 +109,10 @@ int main()
 			printf("\n\n Введите данные: \n\n");
 			trapezoid1->set(); //Установка значений
 			trapezoid1->print();
+			trapezoid1->areaLink(area1);
+			trapezoid1->areaPointer(&area2);
+			printf("\n Площадь(Возврат через ссылку) - %.2f\n", area1);
+			printf("\n Площадь(Возврат через указатель) - %.2f\n", area2);
 			delete trapezoid1; //освобождение памяти;
 			break;
 		}

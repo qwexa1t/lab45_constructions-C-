@@ -16,5 +16,7 @@ public:
 	void set(); //прототипы методов
 	void print();
 	float area();
+	void areaLink(float &area1);
+	void areaPointer(float *p_area2);
 };
 
