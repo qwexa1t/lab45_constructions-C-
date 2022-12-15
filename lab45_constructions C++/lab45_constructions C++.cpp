@@ -20,6 +20,7 @@ int main()
 	setlocale(LC_ALL, "Russian");
 	int N;
 	int kolvo;
+	boolean firstin = true;
 
 	do
 	{
@@ -42,20 +43,28 @@ int main()
 	    {
 		case 1:
 		{
-			printf("\n Вы выбрали квадрат \n");
-			printf("\n Пример \n");
-			//Вызов конструктора без параметров
-			Square* square1 = new Square; //Выделение Динамической памяти объекту класса Square
-			Square* square2 = new Square;
-			(*square1).print(); //Вывод площади квадрата на экран
-			printf("\n\n Введите данные: \n\n");
-			(*square1).set(); //Установка значений
-			(*square1).print();
-			printf("\n\n Введите данные: \n\n");
-			(*square2).set(); //Установка значений
-			(*square2).print();
-			printf(" Количество созданных квадратов: %d\n", square1->GetCount());
-			delete square1, square2; //Освобождение памяти 
+			if (firstin)
+			{
+				printf("\n Вы выбрали квадрат \n");
+				printf("\n Пример \n");
+				//Вызов конструктора без параметров
+				Square* square1 = new Square; //Выделение Динамической памяти объекту класса Square
+				Square* square2 = new Square;
+				(*square1).print(); //Вывод площади квадрата на экран
+				printf("\n\n Введите данные: \n\n");
+				(*square1).set(); //Установка значений
+				(*square1).print();
+				printf("\n\n Введите данные: \n\n");
+				(*square2).set(); //Установка значений
+				(*square2).print();
+				printf(" Количество созданных квадратов: %d\n", square1->GetCount());
+				delete square1, square2; //Освобождение памяти 
+				firstin = false;
+			}
+			else
+			{
+			    printf("\n Вы уже создавали объекты типа 'Квадрат' \n");
+			}
 			break;
 		}
 		case 2:
@@ -75,10 +84,9 @@ int main()
 			Rectang* rectang_arr = new Rectang[5];
 			for (int i = 0; i < kolvo; i++)
 			{
-				rectang_arr[i];
 				printf("\n\n Введите данные: \n\n");
-				rectang1->set(); //Установка значений
-				rectang1->print();
+				rectang_arr[i].set(); //Установка значений
+				rectang_arr[i].print();
 			}
 			delete rectang1; //освобождение памяти
 			delete[] rectang_arr;
@@ -89,7 +97,7 @@ int main()
 			printf("\n Вы выбрали Треугольник \n");
 			printf("\n Пример \n");
 			//Вызов конструктора с 2 параметрами
-			Triangle* triangle1 = new Triangle(3, 5, "Желтый"); //Выделение Динамической памяти объекту класса Triangle
+			Triangle* triangle1 = new Triangle(3, 5, "Yellow"); //Выделение Динамической памяти объекту класса Triangle
 			triangle1->print(); //Вывод площади Треугольника на экран
 			printf("\n\n Введите данные: \n\n");
 			triangle1->set(); //Установка значений
@@ -112,15 +120,40 @@ int main()
 		}
 		case 5:
 		{
+			const int M = 10;
 			printf("\n Вы выбрали Круг \n");
 			printf("\n Пример \n");
 			//Вызов конструктора с 1 параметром
 			Circle* circle1 = new Circle(6); //Выделение Динамической памяти объекту класса Circle
 			circle1->print(); //Вывод площади Круга на экран
-			printf("\n\n Введите данные: \n\n");
-			circle1->set(); //Установка значений
-			circle1->print();
-			delete circle1; //освобождение памяти;
+			printf("\n Сколько Кругов создать? (1-5)");
+			while (scanf("%d", &kolvo) != 1 || kolvo <= 0 || kolvo > 5)
+			{
+				while (getchar() != '\n');
+				printf("\n Выход за границы массива.\n");
+				printf(" Сколько Кругов создать? (1-5)");
+			}
+			//Объявление двумерного динамического массива объектов:
+			Circle** circle_arr = new Circle*[5]; 
+			for (int i = 0; i < kolvo; i++)
+			{
+				circle_arr[i] = new Circle[1]; 
+			}
+			for (int i = 0; i < kolvo; i++)
+			{
+				for (int j = 0; j < 1; j++)
+				{
+					printf("\n\n Введите данные: \n\n");
+					circle_arr[i][j].set(); //Установка значений
+					circle_arr[i][j].print();
+				}
+			}
+			delete circle1; //освобождение памяти
+			//Освобождение памяти отводимое под двумерный динамический массив объектов
+			for (int i = 0; i < kolvo; i++) 
+			{
+				delete[] circle_arr[i];
+			}
 			break;
 		}
 

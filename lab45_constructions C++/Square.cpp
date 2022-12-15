@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include<math.h>
 #include "Square.h"
+using namespace std;
 
 int Square::Count = 0;
 
@@ -23,18 +24,18 @@ Square::~Square() //Деструктор
 void Square::set()
 {
 	printf(" Введите сторону:");
-	scanf("%d", &side);
-	try { // начало блока try
-		if (side < 0)
-			throw "Negative number.";
-		if (side > 100)
-			throw "Large number. Maximum value 100";
+	cin >> side;
+	try 
+	{
+		if (side < 0) throw "Negative number.";
+		if (side > 100) throw "Large number. Maximum value 100";
+		if (!cin) throw "Not integer number.";
 		Count++;
 	}
 	catch (const char* e)
 	{
 		printf("\n Error: %s\n\n", e);
-		return set();
+		exit(1);
 	}
 
 }
