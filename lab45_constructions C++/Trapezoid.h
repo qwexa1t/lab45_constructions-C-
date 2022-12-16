@@ -18,5 +18,6 @@ public:
 	float area();
 	void areaLink(float &area1);
 	void areaPointer(float *p_area2);
+	friend void ChangeTrapezoid(Trapezoid& object);
 };
 

@@ -15,6 +15,17 @@
 #include "Circle.h"
 using namespace std;
 
+void ChangeTrapezoid(Trapezoid& object)
+{
+	printf("\n Введите данные: \n\n");
+	printf(" Введите Нижнее Основание:");
+	scanf("%d", &object.lower_base);
+	printf(" Введите Верхнее Основание:");
+	scanf("%d", &object.upper_base);
+	printf(" Введите Высоту:");
+	scanf("%d", &object.height);
+}
+
 int main()
 {
 	setlocale(LC_ALL, "Russian");
@@ -99,6 +110,7 @@ int main()
 		}
 		case 4:
 		{
+			int change = 0;
 			float area1 = 0; 
 			float area2 = 0;
 			printf("\n Вы выбрали Трапецию \n");
@@ -113,6 +125,19 @@ int main()
 			trapezoid1->areaPointer(&area2);
 			printf("\n Площадь(Возврат через ссылку) - %.2f\n", area1);
 			printf("\n Площадь(Возврат через указатель) - %.2f\n", area2);
+			printf("\n Хотите изменить данные Трапеции?");
+			printf("\n 1 - Да, Любой другой номер - Нет\n");
+			printf(" ");
+			scanf("%d", &change);
+			if (change == 1)
+			{
+				ChangeTrapezoid(*trapezoid1);
+				trapezoid1->print();
+				trapezoid1->areaLink(area1);
+				trapezoid1->areaPointer(&area2);
+				printf("\n Площадь(Возврат через ссылку) - %.2f\n", area1);
+				printf("\n Площадь(Возврат через указатель) - %.2f\n", area2);
+			}
 			delete trapezoid1; //освобождение памяти;
 			break;
 		}
