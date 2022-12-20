@@ -10,6 +10,7 @@ int Square::Count = 0;
 Square::Square() //Конструктор без параметров
 {
 	side = 4;
+	Count++;
 }
 
 Square::Square(int side) //Конструктор с параметрами
@@ -30,7 +31,6 @@ void Square::set()
 		if (side < 0) throw "Negative number.";
 		if (side > 100) throw "Large number. Maximum value 100";
 		if (!cin) throw "Not integer number.";
-		Count++;
 	}
 	catch (const char* e)
 	{
